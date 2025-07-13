@@ -429,3 +429,7 @@ n [0 1 2 4]
 
 ---
 
+# thanks
+
+- find my work at https://garten.salat.dev
+- feel free to contact me on mastodon: @froos@post.lurk.org
