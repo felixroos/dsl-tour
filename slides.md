@@ -93,7 +93,7 @@ _Chapter II in Gödel, Escher, Bach_
 ### isomorphism = information preserving transformation
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
+...
 -->
 
 ---
@@ -105,7 +105,13 @@ bolero rhythm tree
 <img src="./bolero.png" style="max-height:90%"  />
 
 <!--
-Here is another comment.
+- made this in 2021
+- marks the start of my appreciation for trees
+- the tree contains the same information as the score, using less visual encoding
+- blue: vertical lines (should be 1/2 in the tree)
+- yellow: space-separated groups
+- red: upper beam
+- cyan: lower beam
 -->
 
 ---
@@ -180,6 +186,13 @@ bolero as json
 ```
 ````
 
+<!--
+- nested arrays are another way to represent this hierarchy
+- we can calculate timing information from this structure
+- we can remove some structure without destroying the timing information needed for playback
+- instead of encoding in hierarchy, we can store timing information as raw numbers
+-->
+
 ---
 
 # 1. isomorphism
@@ -240,6 +253,13 @@ $: s("sd*<1 3 1 3 1!3 3 1 3!3>")
 
 [open in strudel](https://strudel.cc/#JDogcygic2QiKQogIC5zdHJ1Y3QoYDwKIFsKICAxIFsxIDEgMV0gCiAgMSBbMSAxIDFdIAogIDEgMQogXQogWwogIDEgWzEgMSAxXSAKICAxIFsxIDEgMV0gCiAgWzEgMSAxXSBbMSAxIDFdCiBdCj4KYCk%3D)
 
+<!--
+- here's the same as a strudel pattern
+- patterns allow even more isomorphisms
+- we can use the so called mini notation to notate rhythms in a compact way
+- there are different ways to notate the same rhythm
+-->
+
 ---
 
 # 1. isomorphism
@@ -250,9 +270,20 @@ $: s("sd*<1 3 1 3 1!3 3 1 3!3>")
 
 ## what shouldn't?
 
+<br/>
+
 **a very "isomorphic" language allows many ways to express one thing**
 
-each representation changes your perspective
+<!--
+
+imo:
+
+- having many ways to express certain ideas is good, as
+- it doesn't dictate the one true way to do things.
+- so it gives people more agency in how they want to use the language
+- leads to surprising usage patterns
+
+-->
 
 ---
 
@@ -261,6 +292,13 @@ each representation changes your perspective
 self-similarity
 
 ![recursion](./recursion.gif)
+
+<!--
+
+- the ability of a language to represent hierarchies
+- i could talk about the chomsky hierarchy
+
+-->
 
 ---
 
@@ -290,6 +328,15 @@ algebra example
 
 ^ AST = Abstract Syntax Tree
 
+<!--
+- algebra: classic example of a language that can have arbitrary depth
+- tree that represents above expression
+- we can rewrite this expression to lisp style s-expressions
+- prefix notation, rather than infix notation
+- s-expressions = ast as text
+- parsing s-expressions is easy!
+-->
+
 ---
 
 # 2. recursion
@@ -297,6 +344,13 @@ algebra example
 recursive evaluation
 
 <img src="./arithmetic_recursion.gif" style="max-height:80%" />
+
+<!--
+- assuming we have the syntax tree in some data structure
+- we can evaluate it by recursively walking over it
+- this is the basic mechanism of any compiler/interpreter
+- this works for any type of data, not only numeric calculations
+-->
 
 ---
 
@@ -306,21 +360,33 @@ hashpipe operator as syntax sugar over lisp / s-expressions
 
 ````md magic-move {lines: false}
 ```plaintext
-110 # saw # lpf 300 # out
+(out (lpf (saw 55) 200))
 ```
 
 ```plaintext
-(out (lpf 300 (saw 110)))
+saw 55 # lpf 200 # out
 ```
+````
 
-```plaintext
-impulse 4
-# seq 110 220 330 440
-# saw
-# lpf (sine .1 # range .3 .8) .3
-# out
-```
+<img src="./chain.png" style="max-width:60%" />
 
+<!--
+
+- another example: kabelsalat
+- live coding audio signal processing
+- simple chain: sawtooth oscillator, going into a low pass filter, to the output
+- s-expression is very nested
+- pipe operator as syntax sugar -> isomorphism!
+
+-->
+
+---
+
+# 2. recursion
+
+hashpipe operator as syntax sugar over lisp / s-expressions
+
+````md magic-move {lines: false}
 ```plaintext
 (out 
  (lpf 
@@ -335,9 +401,26 @@ impulse 4
  )
 )
 ```
+
+```plaintext
+impulse 4
+# seq 110 220 330 440
+# saw
+# lpf (sine .1 # range .3 .8) .3
+# out
+```
 ````
 
 [go to garten](https://garten.salat.dev/kabelsalat/lispykabel.html#aW1wdWxzZSA0Cj4gc2VxIDExMCAyMjAgMzMwIDQ0MAo+IHNhdwo+IGxwZiAoc2luZSAuMSA+IHJhbmdlIC4zIC44KSAuMwo+IG91dA==)
+
+<!--
+
+- more complex example
+- hard to read as plain s-expressions
+- easier to read with pipes
+- listen?
+
+-->
 
 ---
 
@@ -349,6 +432,14 @@ staying close to the AST
 - deep nesting = unreadable / hard to type live
 - s-expressions + syntax sugar
 - **a recursive language allows inifinite nesting**
+
+<!--
+
+my approach:
+
+- working backwards from a lisp, adding sugar for convenience
+
+-->
 
 ---
 
@@ -375,6 +466,10 @@ number systems example
 
 <img src="./numbers.png" style="max-height:70%" />
 
+<!--
+example: hiararchy of number systems
+-->
+
 ---
 
 # 3. closure
@@ -393,33 +488,88 @@ number systems example
 - Z is closed under subtraction, but not under division
 - ...
 
+<!--
+- a set is closed under a certain operation when applying the operation on any 2 members of the set yields another member of the set
+- example: adding any 2 natural numbers yields another natural number
+- example: subtracting 2 natural numbers doesn't always yield a natural number, e.g. 2 - 3
+-->
+
 ---
 
 # 3. closure
 
 mondo notation example
 
-```plaintext {1|2|3|4|5}
-n [0 1 2 4] 
-# scale <C:major F:minor>
-# gain [.5 1]*2
-# off .125 (# transpose 12)
-# s [piano,sine]
-# clip 1 # rel .2
-# jux rev
+````md magic-move {lines: false}
+```plaintext
+saw 55 
+# lpf 200 
+# out
 ```
 
-[open in strudel](https://strudel.cc/#bW9uZG9gCm4gWzAgMSAyIDRdIAojIHNjYWxlIDxDOm1ham9yIEY6bWlub3I%2BCiMgZ2FpbiBbLjUgMV0qMgojIG9mZiAuMTI1ICgjIHRyYW5zcG9zZSAxMikKIyBzIFtwaWFubyxzaW5lXQojIGNsaXAgMSAjIHJlbCAuMgojIGp1eCByZXYKYA%3D%3D)
+```plaintext
+saw 55
+# lpf (sine 1 # range 200 500)
+# out
+```
 
-- **a language with closure encourages play**
-- **combinatorial explosion: everything is connected to everything**
-- **emerging complexity from simple parts**
+```plaintext
+saw (impulse 4 # seq 100 200 300 400)
+# lpf (sine 1 # range 200 500)
+# out
+```
+
+```plaintext
+impulse 4 
+# seq 100 200 300 400
+# saw
+# lpf (sine 1 # range 200 500)
+# out
+```
+
+```plaintext
+impulse 4 
+# seq 100 200 300 (sine 1.1 # range 400 500)
+# saw
+# lpf (sine 1 # range 200 500)
+# out
+```
+````
+
+[open example](https://garten.salat.dev/kabelsalat/lispykabel.html#aW1wdWxzZSA0IAo+IHNlcSAxMDAgMjAwIDMwMCAoc2luZSAxLjEgPiByYW5nZSA0MDAgNTAwKQo+IHNhdwo+IGxwZiAoc2luZSAuMyA+IHJhbmdlIC4zIC44KSAuMgo+IG91dA==)
+
+<!--
+- everything is a Node
+- any input of a node can be replaced by any combination of Node's
+- like a modular synthesizer
+- there is no operation that leaves the land of Node's
+-->
+
+---
+
+# 3. closure
+
+- ## a language with closure encourages play
+
+- ## combinatorial explosion: everything is connected to everything
+
+- ## emerging complexity from simple parts
+
+<!--
+
+- play: everything can be combined with everything
+- play: exploring combinations
+- play: get surprised
+- play: less errors (you cannot modulate X with Y)
+- explosion: adding 1 new function means we can combine it with everything else
+
+-->
 
 ---
 
 # recap
 
-## 1. isomorphism: different representations of the same
+## 1. isomorphism: how many representations of an idea can exist?
 
 ## 2. recursion: what can be nested?
 
@@ -431,5 +581,6 @@ n [0 1 2 4]
 
 # thanks
 
-- find my work at https://garten.salat.dev
-- feel free to contact me on mastodon: @froos@post.lurk.org
+## find my work at https://garten.salat.dev
+
+## feel free to contact me on mastodon: @froos@post.lurk.org
