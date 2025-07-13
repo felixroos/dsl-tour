@@ -6,11 +6,7 @@ theme: seriph
 # background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
 title: tools for thought
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+info: dsl tools for thought
 # apply unocss classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
