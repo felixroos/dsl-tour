@@ -3,7 +3,7 @@
 theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
-# background: https://cover.sli.dev
+background: ./three_spheres.png
 # some information about your slides (markdown enabled)
 title: tools for thought
 info: dsl tools for thought
@@ -21,9 +21,32 @@ mdc: true
 #  ogImage: https://cover.sli.dev
 ---
 
-# Domain Specific Thoughts
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-## Top 3 Domain Specific Language Properties for 2025
+
+# DSL Tools for Thought
+
+## 3 Hot Concepts for 2025
+
+<!--
+Maurits Cornelis Escher (1898-1972), Three Spheres II, 1946. Lithograph, on wove paper. Image: 10¼ x 18½ in (260 x 463 mm). Sheet: 15 x 22⅝ in (381 x 575 mm). Estimate: $40,000-60,000. Offered in M.C. Escher: The Art of Infinity Featuring Prints and Drawings Sold to Benefit the Robert Owen Lehman Foundation on 8-22 July 2025 at Christie’s in New York
+-->
+
+---
+
+# tools for thought
+
+and how i use them in my own languages
+
+1. ## isomorphism
+2. ## recursion
+3. ## closure
 
 ---
 
@@ -39,16 +62,6 @@ Felix Roos - @froos@post.lurk.org
   - kabelsalat
   - mondo notation
 - i do this just for fun, no strings attached
-
----
-
-# tools for thought
-
-and how i use them in my own languages
-
-1. ## isomorphism
-2. ## recursion
-3. ## closure
 
 ---
 
@@ -264,6 +277,8 @@ $: s("sd*<1 3 1 3 1!3 3 1 3!3>")
 
 # 1. isomorphism
 
+**a very "isomorphic" language allows many ways to express one thing**
+
 ## what is lost in translation?
 
 ## what can be lost?
@@ -272,7 +287,6 @@ $: s("sd*<1 3 1 3 1!3 3 1 3!3>")
 
 <br/>
 
-**a very "isomorphic" language allows many ways to express one thing**
 
 <!--
 
