@@ -29,7 +29,6 @@ mdc: true
 <br/>
 <br/>
 
-
 # DSL Tools for Thought
 
 ## 3 Hot Concepts for 2025
@@ -287,7 +286,6 @@ $: s("sd*<1 3 1 3 1!3 3 1 3!3>")
 
 <br/>
 
-
 <!--
 
 imo:
@@ -303,7 +301,7 @@ imo:
 
 # 2. recursion
 
-self-similarity
+means of nesting & recursive evaluation
 
 ![recursion](./recursion.gif)
 
@@ -322,7 +320,7 @@ algebra example
 
 ````md magic-move {lines: false}
 ```plaintext
-( (8+2) * (3+5) ) * ( (2+3) * 4 )
+((8+2) * (3+5)) * ((2+3) * 4)
 ```
 
 ```plaintext
